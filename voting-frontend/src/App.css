@@ -1,38 +1,282 @@
-.App {
-  text-align: center;
-}
+/* =========================================================
+   APP ROOT LAYOUT
+========================================================= */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-root {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 22, 0.85),
+    rgba(10, 14, 22, 0.65)
+  );
+  border-bottom: 1px solid var(--border-glass);
+  padding: 18px 36px;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: linear-gradient(90deg, #ff9933, #ffffff, #138808);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
+.header-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.account-pill,
+.network-pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  backdrop-filter: blur(10px);
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-btn,
+.secondary-btn {
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.35s var(--ease-smooth);
+}
+
+.primary-btn {
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+  );
   color: white;
+  box-shadow: var(--shadow-soft);
 }
 
-.App-link {
-  color: #61dafb;
+.primary-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-strong);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.secondary-btn {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-glass);
+}
+
+.secondary-btn:hover {
+  background: var(--bg-glass);
+  color: var(--text-main);
+}
+
+/* =========================================================
+   ERROR BANNER
+========================================================= */
+
+.error-banner {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fecaca;
+  padding: 12px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+main {
+  flex: 1;
+  padding: 60px 8vw;
+  animation: fadeUp 0.8s var(--ease-smooth) forwards;
+}
+
+/* =========================================================
+   CANDIDATE PLAYGROUND
+========================================================= */
+
+.playground {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+/* =========================================================
+   CANDIDATE CARD
+========================================================= */
+
+.candidate-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 36px 24px;
+  text-align: center;
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(20px);
+  transition: all 0.45s var(--ease-smooth);
+  cursor: pointer;
+}
+
+.candidate-card:hover {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: var(--shadow-strong);
+}
+
+/* =========================================================
+   CANDIDATE IMAGE
+========================================================= */
+
+.candidate-avatar {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid transparent;
+  background: linear-gradient(
+    135deg,
+    #ff9933,
+    #ffffff,
+    #138808
+  );
+  padding: 4px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.candidate-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* =========================================================
+   HOVER OVERLAY BIO
+========================================================= */
+
+.candidate-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 22, 0.92);
+  opacity: 0;
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.candidate-card:hover .candidate-overlay {
+  opacity: 1;
+}
+
+.candidate-overlay p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   LIVE RESULTS PANEL
+========================================================= */
+
+.live-results {
+  margin-top: 80px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(18px);
+}
+
+.live-results h3 {
+  margin-bottom: 24px;
+  font-size: 1.3rem;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.result-bar {
+  height: 8px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+  animation: glowPulse 4s infinite;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.app-footer {
+  padding: 30px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+}
+
+.footer-sub {
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  main {
+    padding: 40px 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .candidate-avatar {
+    width: 110px;
+    height: 110px;
   }
 }

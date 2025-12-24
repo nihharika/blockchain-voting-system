@@ -1,0 +1,139 @@
+/*.playground {
+  min-height: 100vh;
+  padding: 40px;
+  background: radial-gradient(circle at top, #1f1f2e, #0b0b0b);
+  color: white;
+}
+
+.pg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.wallet {
+  background: rgba(255,255,255,0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.candidate-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.candidate-card {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.candidate-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.candidate-card:hover {
+  transform: scale(1.12);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+
+.candidate-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h3 {
+  margin-bottom: 8px;
+}
+
+.overlay span {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #9f9cff;
+}
+*/
+
+.dashboard-title {
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+/* Live Results Panel */
+.results-panel {
+  margin: 60px auto 0;
+  max-width: 600px;
+  background: #1f1f1f;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.results-panel h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background: #2b2b2b;
+  color: #ccc;
+  transition: transform 0.3s ease;
+}
+
+.result-row:hover {
+  transform: scale(1.02);
+}
+
+.result-row.leading {
+  background: linear-gradient(135deg, #5f5cff, #8f7cff);
+  color: #fff;
+  font-weight: bold;
+}
+
+.candidate-name {
+  font-size: 16px;
+}
+
+.vote-count {
+  font-size: 15px;
+}
+
+.loading-text {
+  color: #aaa;
+  text-align: center;
+}
+
+.result-bar {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
